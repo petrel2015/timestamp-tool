@@ -20,7 +20,10 @@
 
 * , *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
 body {
   margin: 0;
@@ -258,11 +261,27 @@ button, input { font: inherit; color: inherit; }
 
 .input-card { padding: 24px; min-width: 0; }
 
+.input-card + .input-card { border-top: 1px solid var(--line); }
+
+/* the card holding the focused field is the active one */
+.input-card:focus-within { box-shadow: inset 0 2px 0 var(--accent); }
+
 .card-title {
   margin: 0 0 20px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-title::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  flex: none;
 }
 
 .field { margin-bottom: 18px; }
@@ -279,18 +298,28 @@ button, input { font: inherit; color: inherit; }
 
 .text-input {
   width: 100%;
-  min-height: 44px;
-  padding: 9px 12px;
+  min-height: 56px;
+  padding: 12px 14px;
   border: 1px solid var(--line-2);
   background: var(--paper);
-  font-size: 16px;
+  font-size: 19px;
   border-radius: 0;
   color: var(--ink);
+}
+
+/* strip iOS native chrome so date/time fields match text fields */
+input[type="date"],
+input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 0;
 }
 
 .text-input:focus {
   outline: none;
   border-color: var(--ink);
+  caret-color: var(--accent);
+  box-shadow: inset 0 -2px 0 var(--accent);
 }
 
 .text-input.invalid { border-color: var(--accent); }
@@ -328,6 +357,16 @@ button, input { font: inherit; color: inherit; }
 
 .seg-btn:hover { color: var(--ink); }
 
+.seg-btn:active { color: var(--ink); }
+
+/* unit selector spans the full card width under the big input */
+.conv-inputs .segmented {
+  display: flex;
+  width: 100%;
+}
+
+.conv-inputs .seg-btn { flex: 1; }
+
 .seg-btn.active {
   background: var(--ink);
   color: #FFFFFF;
@@ -347,7 +386,14 @@ button, input { font: inherit; color: inherit; }
 
 .btn:hover { background: #2E2E2E; border-color: #2E2E2E; }
 
+.btn:active { background: var(--accent); border-color: var(--accent); }
+
+#now-btn { width: 100%; }
+
 /* ---------- results ---------- */
+
+/* muted field: the white input cards stay the top layer, results recede */
+.results { background: var(--bg); }
 
 .results-head {
   padding: 14px 24px;
@@ -404,7 +450,7 @@ button, input { font: inherit; color: inherit; }
   align-items: center;
   justify-content: center;
   border: 1px solid var(--line-2);
-  background: var(--paper);
+  background: transparent;
   color: var(--ink-2);
   cursor: pointer;
   justify-self: end;
@@ -417,6 +463,8 @@ button, input { font: inherit; color: inherit; }
 .result-row .copy-btn { grid-row: 2; grid-column: 2; }
 
 .copy-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+.copy-btn:active { border-color: var(--accent); color: var(--accent); }
 
 .copy-btn .icon { fill: none; stroke: currentColor; stroke-width: 1.5; }
 
@@ -431,7 +479,7 @@ button, input { font: inherit; color: inherit; }
 .site-footer {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 18px 20px 40px;
+  padding: 18px 20px calc(40px + env(safe-area-inset-bottom));
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -458,7 +506,7 @@ button, input { font: inherit; color: inherit; }
   .stat:nth-child(4), .stat:nth-child(5) { grid-column: span 3; }
 
   .conv-inputs { grid-template-columns: 1fr 1fr; }
-  .input-card + .input-card { border-left: 1px solid var(--line); }
+  .input-card + .input-card { border-top: none; border-left: 1px solid var(--line); }
 
   .result-row {
     grid-template-columns: 190px 1fr 40px;

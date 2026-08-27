@@ -2,18 +2,9 @@
 
 How to actually use the tool — what README summarizes in one line each, spelled out step by step. For the Chinese page, see [使用指南](../zh/usage.md).
 
-## Live clock
-
-The **01 · Current time** section is always live:
-
-- Local date and time, refreshed on a 250 ms tick (so seconds never look stale), with the weekday beneath it.
-- The timezone label in the section header and footer shows your UTC offset and IANA timezone name, e.g. `GMT+08:00 · Asia/Shanghai`.
-- The current Unix **seconds** and **milliseconds** values each have a copy button on the right.
-- The five statistics cards below (day / week / month since epoch, day of year, ISO week) track "now" using the same conventions as the result panel — see [Epoch statistics conventions](#epoch-statistics-conventions).
-
 ## Timestamp to date-time
 
-Type or paste a timestamp into the **02 · Converter** left card:
+Type or paste a timestamp into the **01 · Converter** left card:
 
 1. Click into the timestamp field and paste (e.g. `1760000000`).
 2. Results appear immediately in the panel below — no submit button.
@@ -35,7 +26,7 @@ Errors are shown under the field and the previous valid result stays on screen �
 
 ## Date-time to timestamp
 
-Use the right card of section 02:
+Use the right card of section 01:
 
 1. Pick a date with the native date picker (years ≥ 1).
 2. Pick a time — `HH:MM` always works; seconds are editable in browsers that support it and default to `0` otherwise (the field is rendered with `step="1"`).
@@ -61,6 +52,15 @@ For whatever instant is currently loaded (yours or "now" at page load), the pane
 Relative time scales through seconds → minutes → hours → days → years (a year is counted as 365.25 days); anything under a second shows "now". Every row has its own copy button.
 
 ![Converter with a pre-filled timestamp](../img/converter-ts-prefill-zh.webp)
+
+## Live clock
+
+The **02 · Current time** section is always live:
+
+- Local date and time, refreshed on a 250 ms tick (so seconds never look stale), with the weekday beneath it.
+- The timezone label in the section header and footer shows your UTC offset and IANA timezone name, e.g. `GMT+08:00 · Asia/Shanghai`.
+- The current Unix **seconds** and **milliseconds** values each have a copy button on the right.
+- The five statistics cards below (day / week / month since epoch, day of year, ISO week) track "now" using the same conventions as the result panel — see [Epoch statistics conventions](#epoch-statistics-conventions).
 
 ## Epoch statistics conventions
 

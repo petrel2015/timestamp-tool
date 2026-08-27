@@ -10,6 +10,12 @@ All notable, user-visible changes to this project are documented here. The forma
 
 - Complete bilingual documentation set: restructured `README.md` / `README.zh.md`, new `README_FOR_AI.md`, this changelog (EN/中文), `docs/en` + `docs/zh` pages (usage, development, deployment, troubleshooting, privacy, FAQ), and the donation feature design doc under `docs/*/features/`, with real-browser screenshots in `docs/img/`. (The old `README.zh-CN.md` was renamed to `README.zh.md`.)
 
+### Changed
+
+- **Converter promoted to the top of the page**: the bidirectional converter is now section 01, above the live clock (02), so the input fields are the first thing users see on every screen size — no scrolling past the clock on phones.
+- Input areas visually emphasized: larger fields (19 px type, 56 px height), red square markers on both card titles, a red top bar on the card holding the focused field, red caret + underline on focus, and a muted gray field behind the result panel so the white input cards read as the top layer.
+- Mobile polish: full-width unit selector and "Use current time" button, pressed (`:active`) states with the system tap highlight removed, normalized iOS date/time fields (≥ 16 px, no focus zoom), a hairline separator between the stacked input cards, footer safe-area padding (`env(safe-area-inset-bottom)`), and a `theme-color` meta for mobile browser chrome.
+
 ## [1.0.0] - 2026-08-27
 
 First published release; this entry summarizes the complete feature set of the initial site (both founding commits of 2026-08-27).
