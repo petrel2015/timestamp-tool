@@ -21,6 +21,7 @@
 | 日期 → 时间戳 | 原生日期 + 时间（含秒）选择器，「采用当前时间」快捷键，结果即时输出 |
 | 统一结果面板 | 本地时间、UTC 时间、ISO 8601、Unix 秒、Unix 毫秒、相对时间，全部可复制 |
 | 纪元统计 | 自 1970-01-01 起第几天 / 第几周 / 第几个月，另附年内第几天与 ISO 周号 |
+| 赞赏 | 页脚低调入口 ☕，弹窗内支付宝 / 微信支付二维码由浏览器在打开时实时生成；手机端优先尝试支付宝跳转，失败即回退二维码 |
 | 中英双语 | 顶栏切换中文 / English；默认跟随浏览器语言，选择会被记住 |
 | 响应式 | 手机单列堆叠，平板与桌面双列网格 |
 
@@ -43,13 +44,14 @@ https://petrel2015.github.io/timestamp-tool/?ts=1760000000000
 
 ```
 timestamp-tool/
-├── index.html                  # 页面结构（语义化分区）
+├── index.html                  # 页面结构（语义化分区 + 赞赏弹窗）
 ├── css/style.css               # 瑞士风格设计系统 + 响应式网格
+├── css/donation.css            # 赞赏入口 / 弹窗 / 二维码卡片样式
 ├── js/i18n.js                  # 中英字典、语言检测、切换与持久化
 ├── js/app.js                   # 实时时钟、转换、统计、剪贴板
-├── img/                        # 生成的收款二维码（SVG）
-├── scripts/generate-donate-qr.mjs  # 重新生成二维码的脚本（仅开发用）
-└── package.json                # 仅为上述脚本服务开发依赖
+├── js/donation.js              # 赞赏配置、弹窗、支付跳转、懒加载二维码
+├── vendor/qrcode-generator/    # 锁定版本的二维码库（MIT，已压缩）—— 懒加载
+└── test/e2e-donation.js        # Playwright E2E，含 jsQR 解码验证
 ```
 
 ### 本地预览
@@ -61,14 +63,19 @@ python3 -m http.server 8000
 
 无构建步骤；直接双击 `index.html` 也能使用。
 
-### 重新生成收款二维码
+### 测试
 
 ```bash
-npm install
-npm run donate:qr
+python3 -m http.server 63647 &   # E2E 依赖此端口
+npm i -D playwright pngjs jsqr   # 仅测试用的开发依赖（或用 NODE_PATH 指向已有副本）
+node test/e2e-donation.js        # 桌面 + iPhone UA 流程，jsQR 解码二维码
 ```
 
-脚本把收款链接渲染为白底墨色 SVG（纠错级别 H），与站点纸色主题保持一致。
+### 赞赏功能实现说明
+
+- 页脚入口打开弹窗；支付二维码由 `js/donation.js` 中 `DONATION_CONFIG` 的收款链接在**运行时实时生成**——仓库不保存任何二维码图片。
+- 二维码库（`qrcode-generator` v1.4.4，MIT）锁定版本 vendor 进仓库，**仅在弹窗首次打开时懒加载**；以行内 SVG 渲染（纠错级别 M、4 模块静区、白底墨点），按支付方式缓存。
+- 桌面端不尝试唤起支付 App。手机端支付宝提供普通 `https` 链接（由支付宝官方页面自行处理唤起）；微信因 `wxp://` 在浏览器中不可靠而直接展示二维码。通过 `visibilitychange` / `pagehide` / `blur` 软检测：未发生跳转时仅切换提示文案，二维码全程可见，没有死胡同。
 
 ### 架构说明
 
@@ -83,6 +90,7 @@ npm run donate:qr
 | --- | --- |
 | 结构 / 样式 | 语义化 HTML5，手写 CSS（grid、`clamp()` 流式字号） |
 | 逻辑 | 原生 JavaScript（ES5 风格 IIFE），无框架、无构建 |
+| 二维码 | `qrcode-generator` v1.4.4（MIT），vendor 压缩版，弹窗打开时懒加载 |
 | 字体排印 | 系统 Helvetica 字体栈、等宽数字、值用等宽字体 |
 | 主题 | 瑞士国际主义风格 —— 纸白 `#fafaf8`、墨色 `#111111`、单一红色强调 `#d52b1e`、细线网格 |
 
@@ -98,8 +106,6 @@ npm run donate:qr
 
 ---
 
-## 请我喝杯咖啡 ￥4.9 ☕
+## 请作者喝杯咖啡 ☕
 
-| Alipay 支付宝 | WeChat 微信 |
-| :---: | :---: |
-| <img src="img/alipay-qr.svg" width="200" alt="支付宝收款二维码"> | <img src="img/wechat-qr.svg" width="200" alt="微信收款二维码"> |
+如果这个小工具帮到了你，点击站点页脚的 **☕ 请作者喝杯咖啡** —— 弹窗中的支付宝 / 微信支付二维码由浏览器实时生成。

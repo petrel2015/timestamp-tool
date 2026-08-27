@@ -7,7 +7,8 @@
 <meta name="description" content="Unix 时间戳与日期时间双向转换工具 · Unix timestamp converter">
 <title>时间戳转换工具</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23D52B1E'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/style.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="stylesheet" href="css/donation.css?v=2">
 </head>
 <body>
 
@@ -212,29 +213,34 @@
     </section>
 
   </div>
-
-  <section class="donate" aria-labelledby="donate-tag">
-    <h2 class="donate-tag" id="donate-tag" data-i18n="donate.tag">请我喝杯咖啡 ￥4.9</h2>
-    <div class="donate-qr">
-      <figure class="donate-figure">
-        <span class="donate-frame"><img src="img/alipay-qr.svg?v=1" alt="支付宝收款二维码" data-i18n-alt="donate.alipayAlt" width="144" height="144"></span>
-        <figcaption data-i18n="donate.alipay">支付宝</figcaption>
-      </figure>
-      <figure class="donate-figure">
-        <span class="donate-frame"><img src="img/wechat-qr.svg?v=1" alt="微信收款二维码" data-i18n-alt="donate.wechatAlt" width="144" height="144"></span>
-        <figcaption data-i18n="donate.wechat">微信</figcaption>
-      </figure>
-    </div>
-    <p class="donate-hint" data-i18n="donate.hint">长按或保存二维码，感谢支持 ☕</p>
-  </section>
 </main>
 
 <footer class="site-footer">
-  <span data-i18n="footer.note">所有计算均在浏览器本地完成，无网络请求。</span>
+  <span class="footer-left">
+    <button class="donate-entry" id="donation-entry" type="button" data-i18n="donation.entry">☕ 请作者喝杯咖啡</button>
+    <span data-i18n="footer.note">所有计算均在浏览器本地完成，无网络请求。</span>
+  </span>
   <span class="mono" id="footer-tz">—</span>
 </footer>
 
-<script src="js/i18n.js?v=1"></script>
-<script src="js/app.js?v=1"></script>
+<div class="donation-overlay" id="donation-overlay" hidden></div>
+<div class="donation-dialog" id="donation-dialog" role="dialog" aria-modal="true" aria-labelledby="donation-title" hidden>
+  <div class="donation-box">
+    <button class="donation-close" id="donation-close" type="button" aria-label="关闭" data-i18n-aria="donation.close">×</button>
+    <h2 class="donation-title" id="donation-title" data-i18n="donation.title">请作者喝杯咖啡 ☕</h2>
+    <p class="donation-body" data-i18n="donation.body">如果这个小工具帮到了你，可以请作者喝杯咖啡。</p>
+    <div class="segmented donation-methods" role="group" aria-label="支付方式" data-i18n-aria="donation.methods">
+      <button type="button" class="seg-btn donation-method active" data-method="alipay" aria-pressed="true" data-i18n="donation.alipay">支付宝</button>
+      <button type="button" class="seg-btn donation-method" data-method="wechat" aria-pressed="false" data-i18n="donation.wechat">微信支付</button>
+    </div>
+    <a class="btn donation-launch" id="donation-launch" href="https://qr.alipay.com/fkx16432isyyhmx9ttwpi79" target="_blank" rel="noopener noreferrer" hidden data-i18n="donation.launch">打开支付宝</a>
+    <div class="donation-qr" id="donation-qr"></div>
+    <p class="donation-hint" id="donation-hint">打开支付宝扫一扫</p>
+  </div>
+</div>
+
+<script src="js/i18n.js?v=2"></script>
+<script src="js/app.js?v=2"></script>
+<script src="js/donation.js?v=2"></script>
 </body>
 </html>

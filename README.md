@@ -21,6 +21,7 @@ A one-page Unix timestamp converter laid out like a Swiss technical data sheet: 
 | Date → timestamp | Native date + time (with seconds) pickers, a “Use current time” shortcut, and instant outputs |
 | Shared result panel | Local time, UTC time, ISO 8601, Unix seconds, Unix milliseconds, relative time — all copyable |
 | Epoch statistics | Day / week / month since 1970-01-01, plus day of year and ISO week number |
+| Donation | Low-key footer entry — ☕ — opens a dialog with Alipay / WeChat Pay QR codes generated in the browser at open time; on mobile it tries the Alipay page first and falls back to the QR |
 | Bilingual | Chinese / English, switched in the masthead; defaults to the browser language and remembers your choice |
 | Responsive | Single column on phones, two-column grids on tablets and desktops |
 
@@ -43,13 +44,14 @@ https://petrel2015.github.io/timestamp-tool/?ts=1760000000000
 
 ```
 timestamp-tool/
-├── index.html                  # page structure (semantic sections)
+├── index.html                  # page structure (semantic sections + donation dialog)
 ├── css/style.css               # Swiss design system + responsive grid
+├── css/donation.css            # donation entry / dialog / QR card styles
 ├── js/i18n.js                  # zh/en dictionaries, detection, switching, persistence
 ├── js/app.js                   # live clock, conversion, statistics, clipboard
-├── img/                        # generated donate QR codes (SVG)
-├── scripts/generate-donate-qr.mjs  # regenerates the QR SVGs (dev-only)
-└── package.json                # dev-only deps for the script above
+├── js/donation.js              # donation config, dialog, app hand-off, lazy QR generation
+├── vendor/qrcode-generator/    # pinned QR library (MIT, minified) — lazy-loaded
+└── test/e2e-donation.js        # Playwright E2E incl. jsQR decode verification
 ```
 
 ### Local preview
@@ -61,14 +63,19 @@ python3 -m http.server 8000
 
 No build step; `index.html` also works when opened directly from disk.
 
-### Regenerate the donate QR codes
+### Tests
 
 ```bash
-npm install
-npm run donate:qr
+python3 -m http.server 63647 &   # E2E expects this port
+npm i -D playwright pngjs jsqr   # dev-only test deps (or point NODE_PATH at existing copies)
+node test/e2e-donation.js        # desktop + iPhone-UA flows, QR decode via jsQR
 ```
 
-The script renders the payment links as ink-on-white SVG (error correction level H) to match the paper theme.
+### Donation implementation notes
+
+- The footer entry opens a native-feeling dialog; payment QR codes are **generated at run time** from the payment links in `DONATION_CONFIG` (`js/donation.js`) — no QR images are stored in the repo.
+- The QR library (`qrcode-generator` v1.4.4, MIT) is vendored at a pinned version and **lazy-loaded only when the dialog first opens**; codes are rendered as inline SVG (error correction M, 4-module quiet zone, dark modules on a white card) and cached per payment method.
+- Desktop never attempts to launch a payment app. On mobile, Alipay gets a plain `https` link (the Alipay page handles its own app hand-off); WeChat shows the QR directly because `wxp://` deep links are unreliable in browsers. A soft `visibilitychange` / `pagehide` / `blur` check swaps the hint text when no hand-off happened — the QR stays visible the whole time, so there is no dead end.
 
 ### Architecture notes
 
@@ -83,6 +90,7 @@ The script renders the payment links as ink-on-white SVG (error correction level
 | --- | --- |
 | Markup / style | Semantic HTML5, hand-written CSS (grid, `clamp()` fluid type) |
 | Logic | Vanilla JavaScript (ES5-style IIFEs), no framework, no build |
+| QR generation | `qrcode-generator` v1.4.4 (MIT), vendored + minified, lazy-loaded at dialog open |
 | Typography | System Helvetica stack, tabular numerals, monospace for values |
 | Theme | Swiss International Style — paper `#fafaf8`, ink `#111111`, single red accent `#d52b1e`, hairline grids |
 
@@ -98,8 +106,6 @@ The script renders the payment links as ink-on-white SVG (error correction level
 
 ---
 
-## Buy me a coffee ￥4.9 ☕
+## Buy me a coffee ☕
 
-| Alipay 支付宝 | WeChat 微信 |
-| :---: | :---: |
-| <img src="img/alipay-qr.svg" width="200" alt="Alipay QR code"> | <img src="img/wechat-qr.svg" width="200" alt="WeChat QR code"> |
+If this little tool helped you, tap **☕ Buy me a coffee** in the site footer — the dialog shows Alipay / WeChat Pay QR codes generated right in your browser.

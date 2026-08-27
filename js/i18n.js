@@ -49,12 +49,19 @@
       'err.range': '超出可表示的日期范围',
       'copy.aria': '复制',
       'footer.note': '所有计算均在浏览器本地完成，无网络请求。',
-      'donate.tag': '请我喝杯咖啡 ￥4.9',
-      'donate.hint': '长按或保存二维码，感谢支持 ☕',
-      'donate.alipay': '支付宝',
-      'donate.wechat': '微信',
-      'donate.alipayAlt': '支付宝收款二维码',
-      'donate.wechatAlt': '微信收款二维码'
+      'donation.entry': '☕ 请作者喝杯咖啡',
+      'donation.methods': '支付方式',
+      'donation.title': '请作者喝杯咖啡 ☕',
+      'donation.body': '如果这个小工具帮到了你，可以请作者喝杯咖啡。',
+      'donation.alipay': '支付宝',
+      'donation.wechat': '微信支付',
+      'donation.launch': '打开支付宝',
+      'donation.scanAlipay': '打开支付宝扫一扫',
+      'donation.scanWechat': '打开微信扫一扫',
+      'donation.notOpened': '没有自动打开？请使用支付宝 / 微信扫码',
+      'donation.close': '关闭',
+      'donation.qrAria': '收款二维码',
+      'donation.qrError': '二维码生成失败，请刷新重试'
     },
 
     en: {
@@ -100,12 +107,19 @@
       'err.range': 'Out of representable date range',
       'copy.aria': 'Copy',
       'footer.note': 'All calculations run locally in your browser — no network requests.',
-      'donate.tag': 'Buy me a coffee ￥4.9',
-      'donate.hint': 'Long-press or save the QR code — thank you ☕',
-      'donate.alipay': 'Alipay',
-      'donate.wechat': 'WeChat',
-      'donate.alipayAlt': 'Alipay QR code',
-      'donate.wechatAlt': 'WeChat QR code'
+      'donation.entry': '☕ Buy me a coffee',
+      'donation.methods': 'Payment method',
+      'donation.title': 'Buy me a coffee ☕',
+      'donation.body': 'If this little tool helped you, you can buy the author a coffee.',
+      'donation.alipay': 'Alipay',
+      'donation.wechat': 'WeChat Pay',
+      'donation.launch': 'Open Alipay',
+      'donation.scanAlipay': 'Scan with Alipay',
+      'donation.scanWechat': 'Scan with WeChat',
+      'donation.notOpened': "Didn't open automatically? Scan the QR code instead.",
+      'donation.close': 'Close',
+      'donation.qrAria': 'Payment QR code',
+      'donation.qrError': 'QR code failed to generate — please reload and try again'
     }
   };
 
@@ -149,10 +163,6 @@
     nodes = document.querySelectorAll('[data-i18n-aria]');
     for (i = 0; i < nodes.length; i++) {
       nodes[i].setAttribute('aria-label', t(nodes[i].getAttribute('data-i18n-aria')));
-    }
-    nodes = document.querySelectorAll('[data-i18n-alt]');
-    for (i = 0; i < nodes.length; i++) {
-      nodes[i].setAttribute('alt', t(nodes[i].getAttribute('data-i18n-alt')));
     }
     nodes = document.querySelectorAll('[data-lang-btn]');
     for (i = 0; i < nodes.length; i++) {
