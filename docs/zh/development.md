@@ -41,9 +41,12 @@ Playwright 需与其缓存的浏览器匹配（上述运行使用 playwright 1.6
 ```
 timestamp-tool/
 ├── index.html                  # 页面结构：语义化分区 + 赞赏弹窗标记
+├── favicon.svg / favicon-*.png / apple-touch-icon-180.png   # 研报风 favicon 全套（紫底 tile + 航线剪影 + 黄方点）
 ├── css/
-│   ├── style.css               # 瑞士风格设计系统 + 响应式网格
+│   ├── fonts.css               # Spectral + IBM Plex Mono @font-face（5 字面）
+│   ├── style.css               # 研报风格设计 tokens（同程紫黄）+ 响应式网格
 │   └── donation.css            # 赞赏入口 / 弹窗 / 二维码卡片样式
+├── fonts/                      # vendor 的 Spectral ×3 + IBM Plex Mono ×2（SIL OFL）及许可文本
 ├── js/
 │   ├── i18n.js                 # 中英字典、检测、切换、持久化
 │   ├── app.js                  # 实时时钟、转换、统计、剪贴板

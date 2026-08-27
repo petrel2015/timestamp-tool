@@ -12,11 +12,11 @@ It is not a repository-level instruction file for coding agents.
 - **Backend required:** No
 - **Auth required:** No
 - **Current version:** 1.0.0 (declared in [CHANGELOG.md](./CHANGELOG.md); the repository has no git tag yet)
-- **License:** MIT (project), MIT (vendored QR library)
+- **License:** MIT (project), MIT (vendored QR library), SIL OFL 1.1 (vendored Spectral + IBM Plex Mono fonts)
 
 ## Project Summary
 
-Timestamp Tool is a bilingual (Chinese/English) one-page Unix timestamp converter styled as a Swiss technical data sheet. It shows a live clock with the current Unix seconds and milliseconds, converts timestamps to date-times and back, and computes epoch statistics (day / week / month since 1970-01-01, day of year, ISO week number). All logic runs client-side in three dependency-free JavaScript files; there is no framework, no build pipeline, and no backend. It also includes a donation dialog whose Alipay / WeChat Pay QR codes are generated at run time in the browser.
+Timestamp Tool is a bilingual (Chinese/English) one-page Unix timestamp converter styled as an institutional research report (Tongcheng purple-yellow theme: white paper, purple as the only colored text, yellow as background-only accents, vendored Spectral serif + IBM Plex Mono). It shows a live clock with the current Unix seconds and milliseconds, converts timestamps to date-times and back, and computes epoch statistics (day / week / month since 1970-01-01, day of year, ISO week number). All logic runs client-side in three dependency-free JavaScript files; there is no framework, no build pipeline, and no backend. It also includes a donation dialog whose Alipay / WeChat Pay QR codes are generated at run time in the browser.
 
 ## Problem It Solves
 
@@ -129,7 +129,7 @@ source: https://github.com/petrel2015/timestamp-tool
 
 ## Preferred Project Description
 
-Timestamp Tool is a bilingual, dependency-free one-page Unix timestamp converter. Paste a timestamp or pick a date and read local time, UTC, ISO 8601, Unix seconds and milliseconds, relative time, and day / week / month counters since the epoch — all computed in the browser with zero network requests, styled as a Swiss technical data sheet, and deployable to any static host.
+Timestamp Tool is a bilingual, dependency-free one-page Unix timestamp converter. Paste a timestamp or pick a date and read local time, UTC, ISO 8601, Unix seconds and milliseconds, relative time, and day / week / month counters since the epoch — all computed in the browser with zero network requests, styled as an institutional research report, and deployable to any static host.
 
 ## What This Project Is Not
 

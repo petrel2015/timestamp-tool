@@ -1,0 +1,39 @@
+/* ============================================================
+   Spectral + IBM Plex Mono — vendored webfonts (research-report
+   style · 同程主题). OFL 1.1, see fonts/OFL-*.txt. 5 faces only.
+   ============================================================ */
+
+@font-face {
+  font-family: "Spectral";
+  src: url(../fonts/Spectral-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url(../fonts/Spectral-Italic.ttf) format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url(../fonts/Spectral-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url(../fonts/IBMPlexMono-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url(../fonts/IBMPlexMono-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}

@@ -2,13 +2,13 @@
 
 English | [简体中文](./README.zh.md)
 
-![license](https://img.shields.io/badge/license-MIT-D52B1E?style=flat-square)
+![license](https://img.shields.io/badge/license-MIT-56338A?style=flat-square)
 ![pure frontend](https://img.shields.io/badge/pure_frontend-no_build%2C_no_framework-111111?style=flat-square)
 ![dependencies](https://img.shields.io/badge/runtime_dependencies-0-111111?style=flat-square)
 ![i18n](https://img.shields.io/badge/i18n-%E4%B8%AD%E6%96%87_%2F_EN-111111?style=flat-square)
 ![site](https://img.shields.io/badge/site-GitHub_Pages-111111?style=flat-square)
 
-A one-page, bilingual Unix timestamp converter laid out like a Swiss technical data sheet: a live clock, bidirectional timestamp ⇄ date-time conversion, and day / week / month counters since the epoch — all rendered in one glance.
+A one-page, bilingual Unix timestamp converter laid out like an institutional research report: a live clock, bidirectional timestamp ⇄ date-time conversion, and day / week / month counters since the epoch — all rendered in one glance.
 
 Reading a timestamp usually means pasting it into a search box and squinting at someone's ad-covered answer. This tool answers locally and instantly: paste a timestamp (or pick a date) and read local time, UTC, ISO 8601, both Unix units, relative time, and where that instant sits since 1970-01-01. Everything runs in the browser — no network requests, no tracking, no build step.
 
@@ -96,8 +96,8 @@ Opening `index.html` directly from disk also works (verified — the donation QR
 | Markup / style | Semantic HTML5, hand-written CSS (grid, `clamp()` fluid type) |
 | Logic | Vanilla JavaScript (ES5-style IIFEs), no framework, no build |
 | QR generation | [`qrcode-generator`](https://github.com/kazuhikoarase/qrcode-generator) v1.4.4 (MIT), vendored (21 KB minified), lazy-loaded at dialog open |
-| Typography | System Helvetica stack, tabular numerals, monospace for values |
-| Theme | Swiss International Style — paper `#fafaf8`, ink `#111111`, single red accent `#d52b1e`, hairline grids |
+| Typography | Vendored Spectral serif (3 faces) + IBM Plex Mono (2 faces), all SIL OFL, in `fonts/`; Chinese falls back to a Noto Serif SC / Songti SC stack; every value is monospace + tabular numerals |
+| Theme | Research-report style, Tongcheng purple-yellow — white paper, purple-black ink ramp, purple `#56338A` as the only colored text, yellow `#F6C343` as background-only accents (highlighter / square dots), red `#B02418` reserved for warnings, hairline rules, capsule pills |
 
 ## Architecture Summary
 
@@ -122,7 +122,7 @@ See [CHANGELOG.md](./CHANGELOG.md). The repository has no git tags yet; `1.0.0` 
 
 ## License
 
-[MIT](LICENSE) © 2026 Yu Hong. The vendored QR library is MIT-licensed by Kazuhiko Arase ([vendor/qrcode-generator/LICENSE](vendor/qrcode-generator/LICENSE)).
+[MIT](LICENSE) © 2026 Yu Hong. The vendored QR library is MIT-licensed by Kazuhiko Arase ([vendor/qrcode-generator/LICENSE](vendor/qrcode-generator/LICENSE)); the vendored Spectral and IBM Plex Mono fonts are SIL OFL 1.1 ([fonts/OFL-Spectral.txt](fonts/OFL-Spectral.txt), [fonts/OFL-IBMPlexMono.txt](fonts/OFL-IBMPlexMono.txt)).
 
 ---
 

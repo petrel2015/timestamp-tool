@@ -2,13 +2,13 @@
 
 [English](./README.md) | 简体中文
 
-![license](https://img.shields.io/badge/license-MIT-D52B1E?style=flat-square)
+![license](https://img.shields.io/badge/license-MIT-56338A?style=flat-square)
 ![pure frontend](https://img.shields.io/badge/pure_frontend-no_build%2C_no_framework-111111?style=flat-square)
 ![dependencies](https://img.shields.io/badge/runtime_dependencies-0-111111?style=flat-square)
 ![i18n](https://img.shields.io/badge/i18n-%E4%B8%AD%E6%96%87_%2F_EN-111111?style=flat-square)
 ![site](https://img.shields.io/badge/site-GitHub_Pages-111111?style=flat-square)
 
-一页式、中英双语的 Unix 时间戳转换工具，排版做成瑞士风技术规格单：实时时钟、时间戳 ⇄ 日期时间双向转换、以及自纪元起的天 / 周 / 月计数——所有答案一眼可得。
+一页式、中英双语的 Unix 时间戳转换工具，排版做成机构投研报告风格（同程紫黄主题）：实时时钟、时间戳 ⇄ 日期时间双向转换、以及自纪元起的天 / 周 / 月计数——所有答案一眼可得。
 
 查一个时间戳，通常意味着把它贴进搜索框，再在铺满广告的结果页里费力辨认。这个工具在本地即时作答：粘贴时间戳（或选择日期），即可读到本地时间、UTC、ISO 8601、秒 / 毫秒两种 Unix 值、相对时间，以及该时刻自 1970-01-01 起的位置。全部计算在浏览器中完成——无网络请求、无埋点、无构建步骤。
 
@@ -96,8 +96,8 @@ python3 -m http.server 8000
 | 结构 / 样式 | 语义化 HTML5，手写 CSS（grid、`clamp()` 流式字号） |
 | 逻辑 | 原生 JavaScript（ES5 风格 IIFE），无框架、无构建 |
 | 二维码 | [`qrcode-generator`](https://github.com/kazuhikoarase/qrcode-generator) v1.4.4（MIT），vendor 锁定（压缩后 21 KB），弹窗打开时懒加载 |
-| 字体排印 | 系统 Helvetica 字体栈、等宽数字、值用等宽字体 |
-| 主题 | 瑞士国际主义风格 —— 纸白 `#fafaf8`、墨色 `#111111`、单一红色强调 `#d52b1e`、细线网格 |
+| 字体排印 | 本地 vendor 的 Spectral 衬线（3 字面）+ IBM Plex Mono（2 字面），均 SIL OFL，位于 `fonts/`；中文回退思源宋 / 宋体栈；所有数值等宽 + 表格数字 |
+| 主题 | 研报风格 · 同程紫黄 —— 纯白纸面、紫黑墨阶，紫 `#56338A` 全页唯一彩色文字，黄 `#F6C343` 仅作底色强调（荧光笔 / 方点），红 `#B02418` 仅警示，发丝线分隔、胶囊 pill 按钮 |
 
 ## 架构概要
 
@@ -122,7 +122,7 @@ python3 -m http.server 8000
 
 ## 许可
 
-[MIT](LICENSE) © 2026 Yu Hong。vendor 二维码库由 Kazuhiko Arase 以 MIT 授权（[vendor/qrcode-generator/LICENSE](vendor/qrcode-generator/LICENSE)）。
+[MIT](LICENSE) © 2026 Yu Hong。vendor 二维码库由 Kazuhiko Arase 以 MIT 授权（[vendor/qrcode-generator/LICENSE](vendor/qrcode-generator/LICENSE)）；vendor 的 Spectral 与 IBM Plex Mono 字体以 SIL OFL 1.1 授权（[fonts/OFL-Spectral.txt](fonts/OFL-Spectral.txt)、[fonts/OFL-IBMPlexMono.txt](fonts/OFL-IBMPlexMono.txt)）。
 
 ---
 

@@ -62,7 +62,7 @@ Everything lives in one dependency-free IIFE (`js/donation.js`) plus dialog mark
 
 ## User Experience
 
-The entry is a single footer button, visually quiet next to the footer's "no network requests" note. The dialog is a paper card in the site's Swiss style: title, one-line ask, two-method segmented control, centered QR, and a hint line that always tells the user what to do next.
+The entry is a single footer button, visually quiet next to the footer's "no network requests" note. The dialog is a paper card in the site's research-report style: title, one-line ask, two-method capsule-pill control, centered QR, and a hint line that always tells the user what to do next.
 
 ![Donation dialog with a runtime-generated Alipay QR](../../img/donation-dialog-zh.webp)
 

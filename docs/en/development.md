@@ -41,9 +41,12 @@ What the suite actually tests (`test/e2e-donation.js`):
 ```
 timestamp-tool/
 ├── index.html                  # page structure: semantic sections + donation dialog markup
+├── favicon.svg / favicon-*.png / apple-touch-icon-180.png   # research-report favicon set (purple tile, route silhouette, yellow dot)
 ├── css/
-│   ├── style.css               # Swiss design system + responsive grid
+│   ├── fonts.css               # Spectral + IBM Plex Mono @font-face (5 faces)
+│   ├── style.css               # research-report design tokens (Tongcheng purple-yellow) + responsive grid
 │   └── donation.css            # donation entry / dialog / QR card styles
+├── fonts/                      # vendored Spectral ×3 + IBM Plex Mono ×2 (SIL OFL) + OFL texts
 ├── js/
 │   ├── i18n.js                 # zh/en dictionaries, detection, switching, persistence
 │   ├── app.js                  # live clock, conversion, statistics, clipboard
