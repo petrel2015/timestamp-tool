@@ -26,7 +26,6 @@
   --wash: rgba(86, 51, 138, 0.05);
   --wash-sel: rgba(86, 51, 138, 0.16);
   --hl: #f6c343;                /* 黄 = 仅底色 */
-  --hl-strong: rgba(246, 195, 67, 0.55);
   --hl-soft: rgba(246, 195, 67, 0.16);
   --neg: #b02418;               /* 红 = 仅警示（错误/超范围） */
   /* 两声部：衬线叙事 + 等宽事实；CJK 回退衬线，禁黑体正文 */
@@ -68,10 +67,6 @@ button, input { font: inherit; color: inherit; }
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
 }
-
-/* 荧光笔：黄只做底色，压在关键数字下面 */
-.hl { background: linear-gradient(to top, var(--hl-strong) 30%, transparent 30%); }
-.hl-soft { background: linear-gradient(to top, var(--hl-soft) 42%, transparent 42%); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -573,9 +568,6 @@ input[type="time"] {
   padding: 5px 12px;
   display: inline-block;
 }
-
-/* 关键读数（Unix 秒）压荧光黄：黄只做底色 */
-.cell-value.hl { padding-top: 4px; padding-bottom: 4px; }
 
 /* ---------- stats grid → metric strip ---------- */
 
